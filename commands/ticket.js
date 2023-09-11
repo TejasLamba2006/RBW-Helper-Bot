@@ -1,4 +1,4 @@
-import { PermissionFlagsBits, MessageActionRow, MessageButton, MessageEmbed, MessageColor } from "discord.js";
+import { PermissionFlagsBits, ButtonBuilder, EmbedBuilder, Colors, ActionRowBuilder, ButtonStyle } from "discord.js";
 
 export default {
   name: "ticket",
@@ -17,26 +17,26 @@ export default {
       return;
     }
 
-    const setupEmbed = new MessageEmbed()
-      .setColor(MessageColor.GREEN)
+    const setupEmbed = new EmbedBuilder()
+      .setColor(Colors.Green)
       .setDescription("Please select the required options for getting help");
 
-    const inquiriesButton = new MessageButton()
+    const inquiriesButton = new ButtonBuilder()
       .setCustomId("ban_appeal")
       .setLabel("Ban Appeal")
-      .setStyle(MessageButton.STYLES.DANGER);
+      .setStyle(ButtonStyle.Danger);
 
-    const hostingSupport = new MessageButton()
+    const hostingSupport = new ButtonBuilder()
       .setCustomId("report")
       .setLabel("Hosting Support")
-      .setStyle(MessageButton.STYLES.PRIMARY);
+      .setStyle(ButtonStyle.Primary);
 
-    const otherSupport = new MessageButton()
+    const otherSupport = new ButtonBuilder()
       .setCustomId("support")
       .setLabel("Other Support")
-      .setStyle(MessageButton.STYLES.PRIMARY);
+      .setStyle(ButtonStyle.Secondary);
 
-    const btnSupport = new MessageActionRow()
+    const btnSupport = new ActionRowBuilder()
       .addComponents(inquiriesButton, hostingSupport, otherSupport);
 
     await message.channel.send({ embeds: [setupEmbed], components: [btnSupport] });

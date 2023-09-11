@@ -7,7 +7,7 @@
  * dm the author on discord.
  */
 import * as config from "./config.js";
-import * as logger from "./src/logger.js";
+import logger from "./src/logger.js";
 import express from "express";
 import { Client, GatewayIntentBits, Options } from "discord.js";
 import "dotenv/config";
@@ -20,7 +20,7 @@ app.get("/", (req, res) =>
 );
 app.listen(port, () => console.log(`Web Server Listening on port ${port}!`));
 
-export const client = new Client({
+const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
@@ -48,3 +48,4 @@ process.on("uncaughtException", (error) => console.log(error, "error"));
 client.login(process.env.token);
 
 import "./src/handler.js";
+export { client };

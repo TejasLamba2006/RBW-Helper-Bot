@@ -1,6 +1,5 @@
 import {
   EmbedBuilder,
-  StringSelectMenuBuilder,
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
